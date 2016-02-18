@@ -8,6 +8,7 @@ tags
 eastl_build_out
 build.bat
 .last_build_x86
+.last_build_x64
 
 ## CMake generated files
 CMakeCache.txt
