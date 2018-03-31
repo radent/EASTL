@@ -975,7 +975,7 @@ public:
 		if (other.storage.function_table == function_table_for_allocator)
 		{
 			detail::init_function_table<typename eastl::allocator_traits<Allocator>::value_type, Allocator>(storage);
-			detail::function_table_inplace_specialization<T, Allocator>::store_allocator(storage, Allocator(allocator));
+			detail::function_table_inplace_specialization<typename eastl::allocator_traits<Allocator>::value_type, Allocator>::store_allocator(storage, Allocator(allocator));
 			function_table_for_allocator->call_copy_functor_only(storage, other.storage);
 		}
 		// if it does not, try to see if the target contains my type. this
@@ -987,7 +987,7 @@ public:
 			if (other.storage.function_table == function_table_for_function)
 			{
 				detail::init_function_table<function, MyAllocator>(storage);
-				detail::function_table_inplace_specialization<T, MyAllocator>::store_allocator(storage, MyAllocator(allocator));
+				detail::function_table_inplace_specialization<function, MyAllocator>::store_allocator(storage, MyAllocator(allocator));
 				function_table_for_function->call_copy_functor_only(storage, other.storage);
 			}
 			else
@@ -1174,7 +1174,7 @@ public:
 		if (other.storage.function_table == function_table_for_allocator)
 		{
 			detail::init_function_table<typename eastl::allocator_traits<Allocator>::value_type, Allocator>(storage);
-			detail::function_table_inplace_specialization<T, Allocator>::store_allocator(storage, Allocator(allocator));
+			detail::function_table_inplace_specialization<typename eastl::allocator_traits<Allocator>::value_type, Allocator>::store_allocator(storage, Allocator(allocator));
 			function_table_for_allocator->call_copy_functor_only(storage, other.storage);
 		}
 		// if it does not, try to see if the target contains my type. this
@@ -1186,7 +1186,7 @@ public:
 			if (other.storage.function_table == function_table_for_function)
 			{
 				detail::init_function_table<function, MyAllocator>(storage);
-				detail::function_table_inplace_specialization<T, Allocator>::store_allocator(storage, MyAllocator(allocator));
+				detail::function_table_inplace_specialization<function, Allocator>::store_allocator(storage, MyAllocator(allocator));
 				function_table_for_function->call_copy_functor_only(storage, other.storage);
 			}
 			else
